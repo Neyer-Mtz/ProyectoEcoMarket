@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .product-card {
+            border: 2px solid #666;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            height: 280px;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background-color: #e0e0e0;
+            border: 1px solid #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #000;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+        
+        .categories-sidebar {
+            border: 2px solid #666;
+            padding: 15px;
+            background-color: #f8f9fa;
+            height: fit-content;
+        }
+        
+        .categories-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        .category-item {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .category-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        .dropdown-toggle::after {
+            margin-left: 8px;
+        }
+        
+        .main-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <!-- Título principal -->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="main-title">Catálogo de Productos</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Sidebar de Categorías como Menú Desplegable -->
+            <div class="col-lg-2 col-md-3 col-sm-12 mb-4">
+                <div class="categories-sidebar">
+                    <div class="categories-title">Categorías</div>
+                    
+                    <!-- Menú desplegable de categorías -->
+                    <div class="dropdown d-grid">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownCategorias" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seleccionar Categoría
+                        </button>
+                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownCategorias">
+                            <li><a class="dropdown-item" href="#" onclick="filtrarCategoria('todas')">Todas las categorías</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="filtrarCategoria('frutas')">Frutas</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filtrarCategoria('verduras')">Verduras</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filtrarCategoria('ofertas')">Ofertas</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="filtrarCategoria('novedades')">Novedades</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Lista de categorías adicional (opcional) -->
+                    <div class="mt-3">
+                        <div class="category-item" onclick="filtrarCategoria('frutas')">Frutas</div>
+                        <div class="category-item" onclick="filtrarCategoria('verduras')">Verduras</div>
+                        <div class="category-item" onclick="filtrarCategoria('ofertas')">Ofertas</div>
+                        <div class="category-item" onclick="filtrarCategoria('novedades')">Novedades</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid de Productos -->
+            <div class="col-lg-10 col-md-9 col-sm-12">
+                <div class="row" id="productos-container">
+                    <!-- Producto 1 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="frutas">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Manzanas Rojas</div>
+                            <div class="product-price">$7.50</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 2 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="verduras">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Lechuga Fresca</div>
+                            <div class="product-price">$5.00</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 3 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="ofertas">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Tomates Oferta</div>
+                            <div class="product-price">$4.20</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 4 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="novedades">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Apio Orgánico</div>
+                            <div class="product-price">$5.75</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 5 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="frutas">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Plátanos</div>
+                            <div class="product-price">$8.00</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Producto 6 -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 producto-item" data-categoria="verduras">
+                        <div class="product-card">
+                            <div class="product-image">Imagen</div>
+                            <div class="product-name">Zanahorias</div>
+                            <div class="product-price">$7.00</div>
+                            <div class="product-description">Descripción breve</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Función para filtrar productos por categoría
+        function filtrarCategoria(categoria) {
+            const productos = document.querySelectorAll('.producto-item');
+            const botonDropdown = document.getElementById('dropdownCategorias');
+            
+            productos.forEach(producto => {
+                if (categoria === 'todas' || producto.dataset.categoria === categoria) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+            
+            // Actualizar texto del botón dropdown
+            const textoCategoria = categoria === 'todas' ? 'Todas las categorías' : 
+                                 categoria.charAt(0).toUpperCase() + categoria.slice(1);
+            botonDropdown.textContent = textoCategoria;
+        }
+        
+        // Inicializar mostrando todos los productos
+        document.addEventListener('DOMContentLoaded', function() {
+            filtrarCategoria('todas');
+        });
+    </script>
+</body>
+</html>
