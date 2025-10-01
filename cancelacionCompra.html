@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EcoMarket</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6"> 
+                <div class="card p-4 shadow-sm border">
+                    <div class="card-body">
+                        <h4 class="card-title text-center fw-bold mb-4">Formulario de Cancelación de Pedidos</h4>
+
+                        <form>
+                            <div class="mb-3">
+                                <label for="numeroPedido" class="form-label fw-bold">PEDIDO ECO-2025-125</label>
+                            </div>
+
+                            <div class="mb-3 mt-4">
+                                <p class="fw-bold mb-2">Motivo de cancelación de pedido</p>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="cambie_opinion" id="checkOpinion" checked>
+                                    <label class="form-check-label text-primary" for="checkOpinion">
+                                        Cambié de opinión
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="mejor_precio" id="checkMejorPrecio">
+                                    <label class="form-check-label text-secondary" for="checkMejorPrecio">
+                                        Encontré mejor precio
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" value="problema_entrega" id="checkProblemaEntrega">
+                                    <label class="form-check-label text-secondary" for="checkProblemaEntrega">
+                                        Problema con horario de entrega
+                                    </label>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="otroMotivo" placeholder="Otro (Opcional)">
+                                </div>
+                            </div>
+
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-info text-white">Cancelar pedido</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
